@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dostęp Zabroniony</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ff0055;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        /* Kontener na kręcące się ósemki */
+        .ambient-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .spinning-eight {
+            position: absolute;
+            font-size: 5rem;
+            font-weight: bold;
+            color: rgba(255, 0, 85, 0.15);
+            animation: spin 6s linear infinite;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+        }
+
+        /* Rozmieszczenie losowych ósemek w tle */
+        .e1 { top: 15%; left: 15%; animation-duration: 4s; }
+        .e2 { top: 20%; right: 20%; animation-duration: 7s; animation-direction: reverse; }
+        .e3 { bottom: 25%; left: 20%; animation-duration: 5s; }
+        .e4 { bottom: 15%; right: 15%; animation-duration: 8s; animation-direction: reverse; }
+
+        /* Główny kontener tekstowy */
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite alternate, glitch 0.4s infinite;
+            text-shadow: 0 0 20px #ff0055;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            animation: pulse 2s infinite alternate;
+        }
+
+        /* Animacja kręcenia się (3D) */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        /* Animacja pulsującego tekstu */
+        @keyframes pulse {
+            0% { transform: scale(0.98); opacity: 0.9; }
+            100% { transform: scale(1.02); opacity: 1; }
+        }
+
+        /* Od siebie: Efekt zakłóceń (glitch) matrycy */
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #00ffff, -2px -2px #ff0055; }
+            50% { text-shadow: -2px 2px #ff0055, 2px -2px #00ffff; }
+            100% { text-shadow: 2px -2px #00ffff, -2px 2px #ff0055; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animowane ósemki w tle -->
+    <div class="ambient-container">
+        <div class="spinning-eight e1">8</div>
+        <div class="spinning-eight e2">8</div>
+        <div class="spinning-eight e3">8</div>
+        <div class="spinning-eight e4">8</div>
+    </div>
+
+    <!-- Główny komunikat -->
+    <div class="content">
+        <h1>JESTEŚ IDIOTĄ<br>NIGDY NIE DOSTANIESZ TEGO TOKENA XDDD EZZ</h1>
+        <!-- Coś od siebie: hackerski podtekst błędu -->
+        <p class="subtitle">[ SYSTEM ERROR: ACCESS DENIED FOREVER ]</p>
+    </div>
+
+</body>
+</html>
